@@ -76,4 +76,4 @@ def t1_digestion(seq):
 
     # plot shows that most fragments are between 1-8 base pairs long. This shows that there is a frequent occurence of Guanine residues in the sequence.
 
-bp_analysis(sequence)
+t1_digestion(sequence)
