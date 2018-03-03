@@ -216,6 +216,6 @@ On analysing the graph, you can see that though the fragment frequencies are lar
 
 ![handm](images/handm.png)
 
-Interesting? [Here](http://www.sbs.ntu.edu.sg/prospective/undergraduate/MinorinLifeSciences/Pages/Home.aspx)'s a link outlining the Life Sciences Minor at NTU haha.
+Interesting? [Here](http://www.sbs.ntu.edu.sg/prospective/undergraduate/MinorinLifeSciences/Pages/Home.aspx)'s a link outlining the Life Sciences Minor at NTU(haha).
 
 
