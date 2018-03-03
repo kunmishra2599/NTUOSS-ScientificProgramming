@@ -30,6 +30,9 @@ def bp_analysis(seq):
 
     plt.bar(x_ax, counter)
     plt.xticks(x_ax, ('Adenine', 'Uracil', 'Guanine', 'Cytosine'))
+    plt.xlabel('Nitrogenous Bases')
+    plt.ylabel('Frequency')
+    plt.title('Base Pair Composition')
     plt.grid(True)
     plt.show()
 
