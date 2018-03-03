@@ -8,7 +8,9 @@ import numpy as np
 
 sequence="acauuugcuucugacacaacuguguucacuagcaaccucaaacagacaccauggugcaucugacuccugaggagaagucugccguuacugcccuguggggcaaggugaacguggaugaaguugguggugaggcccugggcaggcugcugguggucuacccuuggacccagagguucuuugaguccuuuggggaucuguccacuccugaugcuguuaugggcaacccuaaggugaaggcucauggcaagaaagugcucggugccuuuagugauggccuggcucaccuggacaaccucaagggcaccuuugccacacugagugagcugcacugugacaagcugcacguggauccugagaacuucaggcuccugggcaacgugcuggucugugugcuggcccaucacuuuggcaaagaauucaccccaccagugcaggcugccuaucagaaagugguggcugguguggcuaaugcccuggcccacaaguaucacuaagcucgcuuucuugcuguccaauuucuauuaaagguuccuuuguucccuaaguccaacuacuaaacugggggauauuaugaagggccuugagcaucuggauucugccuaauaaaaaacauuuauuuucauugc"
 
-# print('Number of Base Pairs: '+str(len(sequence)))
+myoglobin="aaaccccagcuguuggggccaggacacccagugagcccauacuugcucuuuuugucuucuucagacugcgccauggggcucagcgacggggaauggcaguuggugcugaacgucugggggaaguccucaucaggcucuuuaagggucacccagagacucuggagaaguuugacaaguucaagcaccugaagucagaggacgagaugaaggcaucugaggacuuaaagaagcauggugccacugugcucaccgcccuggguggcauccuuaagaagaaggggcaucaugaggcagagauuaagccccuggcacagucgcaugccaccaagcacaagauccccgugaaguaccuggaguucaucucggaaugcaucauccagguucugcagagcaagcaucccggggacuuuggugcugaugcccagggggccaugaacaaggcccuggagcuguuccggaaggacauggccuccaacuacaaggagcugggcuuccagggcuaggccccugccgcucccacccccacccaucugggccccggguucaagagagagcggggucugaucucguguagccauauagaguuugcuucugagugucugcuuuguuuaguagaggugggcaggaggagcugaggggcuggggcugggguguugaaguuggcuuugcaugcccagcgaugcgccucccugugggaugucaucacccugggaaccgggaguggcccuuggcucacuguguucugcaugguuuggaucugaauuaauuguccuuucuucuaaaucccaaccgaacuucuuccaaccuccaaacuggcuguaaccccaaauccaagccauuaacuacaccugacaguagcaauugucugauuaaucacuggccccuugaagacagcagaaugucccuuugcaaugaggaggagaucugggcugggcgggccagcuggggaagcauuugacuaucuggaacuugugugugccuccucaggt"
+
+#print('Number of Base Pairs: '+str(len(sequence)))
 
 
 # Digestion by RNAse T1 - cleaves after Guanine Residues
@@ -76,4 +78,57 @@ def t1_digestion(seq):
 
     # plot shows that most fragments are between 1-8 base pairs long. This shows that there is a frequent occurence of Guanine residues in the sequence.
 
-t1_digestion(sequence)
+def h_comparison(seq1, seq2):
+    t1_pre_digested1 = seq1.split('g')
+    t1_digested1 = []
+    for x in t1_pre_digested1:
+        if x == '':
+            x = 'g'
+            t1_digested1.append(x)
+        else:
+            t1_digested1.append(x)
+
+    plotme1 = []
+
+    for x in t1_digested1:
+        plotme1.append(len(x))
+
+    t1_pre_digested2 = seq2.split('g')
+    t1_digested2 = []
+    for x in t1_pre_digested2:
+        if x == '':
+            x = 'g'
+            t1_digested2.append(x)
+        else:
+            t1_digested2.append(x)
+
+
+    plotme2 = []
+
+
+    for x in t1_digested2:
+        plotme2.append(len(x))
+
+    #plotting and formatting graph
+    plt.xlabel('Fragment Sizes (no of b.p)')
+    plt.ylabel('Frequency')
+    plt.title('Fragment Comparison with Haemoglobin')
+
+    minorLocator = MultipleLocator(2)
+    majorLocator = MultipleLocator(2)
+    majorFormatter = FormatStrFormatter('%d')
+
+    ax = plt.subplot(111)
+
+    ax.xaxis.set_major_locator(majorLocator)
+    ax.xaxis.set_major_formatter(majorFormatter)
+
+    ax.xaxis.set_minor_locator(minorLocator)
+    plt.grid(True)
+    plt.hist(plotme1, alpha=0.5, label='Haemoglobin')
+    plt.hist(plotme2, alpha=0.5, label='Myoglobin')
+    plt.legend(loc='upper right')
+
+    plt.show()
+
+h_comparison(sequence, myoglobin)
