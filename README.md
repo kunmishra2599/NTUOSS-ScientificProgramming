@@ -64,7 +64,7 @@ Here's what my PC gave me:
 raw times: 0.66 0.804 0.837
 10000000 loops, best of 3: 0.066 usec per loop
 ```
-0.066µseconds! That's 35% faster than using lists! Noted, this is a rather simplistic example and 35% doesn't seem much, but when you work with larger functions and more complicated manipilation methods, microseconds add up to milliseconds, and milliseconds add up to seconds and so on.
+0.066µseconds! That took nearly a third of the time! Noted, this is a rather simplistic example and doesn't like seem much, but when you work with larger functions and more complicated manipilation methods, microseconds add up to milliseconds, and milliseconds add up to seconds and so on.
 
 What makes NumPy so fast? It's homogenised, so every element is of the same type. Try printing the variables `x` and `y` and you'll see the following output:
 ```python
@@ -93,6 +93,29 @@ Which prints:
 Shape:(4, 3)
 ```
 Each Multidimensional array has a particular shape, which can be accessed from `yourarrayhere.shape`, which is in the format (Rows, Columns).
+Array indexing is also quite similar to the way you'd index lists, with some twists. Take this example:
+```
+print(a2[0,1])
+20
+print(a2[2,2])
+90
+print(a2[0,0],a2[1,1],a2[2,2])
+10 50 90
+print(a2[[0,1,2,3],[0,1,0,1]])
+[ 10  50  70 110]
+```
+This gets a bit tricky to understand. Since `a2` is a multidimensional array, we have to specify the index for each row, and the for each element in the row. Therefore, to access `50`, you'd have to use `a2[1,1]`. Though this seems annoying now, it's quite powerful when you think about it. The last statement is a combination of the previous lines of code.
+In essence, you can define an array of indices and use that to access data within the matrix.
+
+Similar to lists, you can multiply arrays together, and this works element-wise. For example:
+```python
+a2*a2
+[[  100   400   900]
+ [ 1600  2500  3600]
+ [ 4900  6400  8100]
+ [10000 12100 14400]]
+```
+Every element multiplies by its counterpart with the same index. 
 
 ## Section 2 - Working with Matplotlib - Charts, Axes and Nucleotide Sequences
 
