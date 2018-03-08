@@ -1,20 +1,24 @@
 # NTUOSS-ScientificProgramming
 Workshop for NTUOSS AY2017-2018
 
+_Written by [Kunal Mishra](https://github.com/kunmishra2599) for [NTU Open Source Society](https://github.com/ntuoss)_
+
+---
+
 
 ## Section 1 - Some NumPy basics - Arrays, Indexing and Getting into the Matrix
 
 ### Step 1 - What makes NumPy so great?
 Before we can get into the data visualisation aspect, we gotta go through some NumPy basics. Lets start off simple. Create a file called `neo.py`, and inside it, add the following lines of code to import NumPy:
 
-```
+```python
 import numpy as np
 import timeit
 ```
 Simple. Easy. Precise. I love python. Before we move on, `timeit` is a pretty useful function to, well, timeit. Basically it helps you time particular functions (which might not seem useful now but will be quite soon). 
 
 I assume you guys know what a list is. Add the following lines of code to your program and lets begin:
-```
+```python
 x = [2,5,10,394,420,50000,12309203920,5e+15]
 
 def hellaMath(items):
@@ -23,11 +27,11 @@ def hellaMath(items):
 Now, before we move any further, lets talk a bit about Numpy. It's one of the most useful libraries in python, adding support for arrays, matrices and poweful mathematical manipulation. Built in [2005](https://en.wikipedia.org/wiki/NumPy), it made running complex calculations in python much faster and easier with the help of built in functions. You'll find yourself using this library quite often soon, so it pays to know what it is (Throwback to Chait's workshop on [Machine Learning](https://github.com/chaitjo/NTUOSS-MachineLearningWorkshop)).
 
 Now, using NumPy's built in functions, I've defined a function `hellaMath` that runs some calculations on elements of a list / array. You can find the whole list of built in Mathematical functions [here](https://docs.scipy.org/doc/numpy/reference/routines.math.html). Before we go further, I want to demonstrate NumPy's spectacular efficiency. Run the following line in your terminal:
-```
+```python
 python -m timeit -v lambda:hellaMath(x)
 ```
 Run it, and you should see something similar printed out below in the terminal(tbh, it depends on your PC and its processor, but here's what mine did at 1:30AM on 03/09/18 while I was listening to [Pink Floyd](https://www.youtube.com/watch?v=LTseTg48568) on youtube).
-```
+```python
 10 loops -> 4.91e-06 secs
 100 loops -> 3.7e-05 secs
 1000 loops -> 0.000242 secs
@@ -41,15 +45,15 @@ Timeit does a series of loops as you can see, and averages out the time taken pe
 _That's hella fast_. However, NumPy can do even better. 
 
 Let's create an **array**. Now, I know people like to use the terms array and list interchangeably(I do too), but Python comes built in with Lists. NumPy adds array functionality to Python. Before we get into the differences, let's run the same test on a `Numpy.array`. Add the following lines to your code:
-```
+```python
 y = np.array([2,5,10,394,420,50000,12309203920,5e+15])
 ```
 And now, run this in the terminal:
-```
+```python
 python -m timeit -v lambda:hellaMath(y)
 ```
 Here's what my PC gave me:
-```
+```python
 10 loops -> 1.51e-06 secs
 100 loops -> 1.13e-05 secs
 1000 loops -> 9.7e-05 secs
@@ -63,7 +67,7 @@ raw times: 0.66 0.804 0.837
 0.066µseconds! That's 35% faster than using lists! Noted, this is a rather simplistic example and 35% doesn't seem much, but when you work with larger functions and more complicated manipilation methods, microseconds add up to milliseconds, and milliseconds add up to seconds and so on.
 
 What makes NumPy so fast? It's homogenised, so every element is of the same type. Try printing the variables `x` and `y` and you'll see the following output:
-```
+```python
 x: [2, 5, 10, 394, 420, 50000, 12309203920, 5000000000000000.0]
 y: [  2.00000000e+00   5.00000000e+00   1.00000000e+01   3.94000000e+02
       4.20000000e+02   5.00000000e+04   1.23092039e+10   5.00000000e+15]
@@ -72,13 +76,30 @@ Notice the difference? All NumPy elements are the same, and this makes calculati
 
 ### Step 2 - Understand that NumPy is superior, and learn a bit more about it
 
+While NumPy lets you create basic arrays like this:
+```python
+a1 = np.array([10,20,30])
+```
+It's true power comes from the fact that it lets you create **multidimensional arrays**. Like this:
+```python
+a2 = np.array([[10,20,30],[40,50,60],[70,80,90],[100,110,120]])
+```
+Which prints:
+```python
+[[ 10  20  30]
+ [ 40  50  60]
+ [ 70  80  90]
+ [100 110 120]]
+Shape:(4, 3)
+```
+Each Multidimensional array has a particular shape, which can be accessed from `yourarrayhere.shape`, which is in the format (Rows, Columns).
 
 ## Section 2 - Working with Matplotlib - Charts, Axes and Nucleotide Sequences
 
 ### Step 1 - Importing libraries and setting up the sequence
 To start off, we need to import a few libaries for our use. Create a python file called `sequence.py`. Add the following lines to the top of your code:
 
-```
+```python
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MultipleLocator, FormatStrFormatter
 import numpy as np
@@ -87,7 +108,7 @@ Alot of these libraries will become relevant quite soon. The first import is for
 The second `ticker` import will help us format the x and y axes on the graphs we're about to generate. The last imports the module `numpy`, which we'll get into soon. 
 
 Following this, add the following line of code to your file:
-```
+```python
 sequence="acauuugcuucugacacaacuguguucacuagcaaccucaaacagacaccauggugcaucugacuccugaggagaagucugccguuacugcccuguggggcaaggugaacguggaugaaguugguggugaggcccugggcaggcugcugguggucuacccuuggacccagagguucuuugaguccuuuggggaucuguccacuccugaugcuguuaugggcaacccuaaggugaaggcucauggcaagaaagugcucggugccuuuagugauggccuggcucaccuggacaaccucaagggcaccuuugccacacugagugagcugcacugugacaagcugcacguggauccugagaacuucaggcuccugggcaacgugcuggucugugugcuggcccaucacuuuggcaaagaauucaccccaccagugcaggcugccuaucagaaagugguggcugguguggcuaaugcccuggcccacaaguaucacuaagcucgcuuucuugcuguccaauuucuauuaaagguuccuuuguucccuaaguccaacuacuaaacugggggauauuaugaagggccuugagcaucuggauucugccuaauaaaaaacauuuauuuucauugc"
 ```
 ### Step 2 - Learning a bit of Molecular Biology
@@ -112,7 +133,7 @@ Now, generally, such sequences are unknown, and scientists probe the sequence us
 ### Step 3 - Doing a base pair analysis
 
 To seperate the strand into fragments, we're going to mimic the activity of **RNAse T1**, a common endoribonuclease that quite literally, splices nucleotide sequences into fragments after Guanine Residues. Before we do that, lets visualise the base pair composition of the sequence. Add the following lines of code to your file:
-```
+```python
 def bp_analysis(seq):
 
     counter = [0,0,0,0]
@@ -154,7 +175,7 @@ We need to take this one step further and _cleave_ the mRNA sequence using our a
 ### Step 4 - Cleaving the sequence and analysing the fragments
 
 Add the following lines of code to your file.
-```
+```python
 def t1_digestion(seq):
     t1_pre_digested = seq.split('g')
     t1_digested = []
@@ -194,7 +215,7 @@ def t1_digestion(seq):
     plt.show()
 ```
 These lines are quite similar to the previous function `bp_analysis`. Running `len(t1_digested)` tells us that there are a total of 166 digested fragments. Dividing the fragments by size, we can generate a histogram using `plt.hist`. The object of focus here, however is in these few lines:
-```
+```python
     minorLocator = MultipleLocator(2)
     majorLocator = MultipleLocator(2)
     majorFormatter = FormatStrFormatter('%d')
@@ -217,14 +238,14 @@ This graph gives us a bit more information about the distribution of Guanine res
 ### Step 5 - Unknown Protein Comparison
 
 Add the following sequence to your file:
-```
+```python
 myoglobin="aaaccccagcuguuggggccaggacacccagugagcccauacuugcucuuuuugucuucuucagacugcgccauggggcucagcgacggggaauggcaguuggugcugaacgucugggggaaguccucaucaggcucuuuaagggucacccagagacucuggagaaguuugacaaguucaagcaccugaagucagaggacgagaugaaggcaucugaggacuuaaagaagcauggugccacugugcucaccgcccuggguggcauccuuaagaagaaggggcaucaugaggcagagauuaagccccuggcacagucgcaugccaccaagcacaagauccccgugaaguaccuggaguucaucucggaaugcaucauccagguucugcagagcaagcaucccggggacuuuggugcugaugcccagggggccaugaacaaggcccuggagcuguuccggaaggacauggccuccaacuacaaggagcugggcuuccagggcuaggccccugccgcucccacccccacccaucugggccccggguucaagagagagcggggucugaucucguguagccauauagaguuugcuucugagugucugcuuuguuuaguagaggugggcaggaggagcugaggggcuggggcugggguguugaaguuggcuuugcaugcccagcgaugcgccucccugugggaugucaucacccugggaaccgggaguggcccuuggcucacuguguucugcaugguuuggaucugaauuaauuguccuuucuucuaaaucccaaccgaacuucuuccaaccuccaaacuggcuguaaccccaaauccaagccauuaacuacaccugacaguagcaauugucugauuaaucacuggccccuugaagacagcagaaugucccuuugcaaugaggaggagaucugggcugggcgggccagcuggggaagcauuugacuaucuggaacuugugugugccuccucaggt"
 ```
 Through this exercise, we'll hopefully learn more about Myoglobin. ~~Well, I know about myoglobin, but this should help you guys learn more about it haha.~~ 
 This sequence is 989 base pairs long. We'll skip on the base pair analysis and directly compare it against the known fragments from the Haemoglobin sequence.
 
 Add this function to your code.
-```
+```python
 def h_comparison(seq1, seq2):
     t1_pre_digested1 = seq1.split('g')
     t1_digested1 = []
