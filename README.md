@@ -2,8 +2,78 @@
 Workshop for NTUOSS AY2017-2018
 
 
+## Section 1 - Some NumPy basics - Arrays, Indexing and Getting into the Matrix
 
-## Section 1 - Working with Matplotlib - Charts, Axes and Nucleotide Sequences
+### Step 1 - What makes NumPy so great?
+Before we can get into the data visualisation aspect, we gotta go through some NumPy basics. Lets start off simple. Create a file called `neo.py`, and inside it, add the following lines of code to import NumPy:
+
+```
+import numpy as np
+import timeit
+```
+Simple. Easy. Precise. I love python. Before we move on, `timeit` is a pretty useful function to, well, timeit. Basically it helps you time particular functions (which might not seem useful now but will be quite soon). 
+
+I assume you guys know what a list is. Add the following lines of code to your program and lets begin:
+```
+x = [2,5,10,394,420,50000,12309203920,5e+15]
+
+def hellaMath(items):
+    return (np.tan(items*np.sin(items)*np.cos(items)))**25
+```
+Now, before we move any further, lets talk a bit about Numpy. It's one of the most useful libraries in python, adding support for arrays, matrices and poweful mathematical manipulation. Built in [2005](https://en.wikipedia.org/wiki/NumPy), it made running complex calculations in python much faster and easier with the help of built in functions. You'll find yourself using this library quite often soon, so it pays to know what it is (Throwback to Chait's workshop on [Machine Learning](https://github.com/chaitjo/NTUOSS-MachineLearningWorkshop)).
+
+Now, using NumPy's built in functions, I've defined a function `hellaMath` that runs some calculations on elements of a list / array. You can find the whole list of built in Mathematical functions [here](https://docs.scipy.org/doc/numpy/reference/routines.math.html). Before we go further, I want to demonstrate NumPy's spectacular efficiency. Run the following line in your terminal:
+```
+python -m timeit -v lambda:hellaMath(x)
+```
+Run it, and you should see something similar printed out below in the terminal(tbh, it depends on your PC and its processor, but here's what mine did at 1:30AM on 03/09/18 while I was listening to [Pink Floyd](https://www.youtube.com/watch?v=LTseTg48568) on youtube).
+```
+10 loops -> 4.91e-06 secs
+100 loops -> 3.7e-05 secs
+1000 loops -> 0.000242 secs
+10000 loops -> 0.0021 secs
+100000 loops -> 0.0287 secs
+1000000 loops -> 0.265 secs
+raw times: 0.21 0.188 0.192
+1000000 loops, best of 3: 0.188 usec per loop
+```
+Timeit does a series of loops as you can see, and averages out the time taken per loop, which is 0.188µsec per loop. 
+_That's hella fast_. However, NumPy can do even better. 
+
+Let's create an **array**. Now, I know people like to use the terms array and list interchangeably(I do too), but Python comes built in with Lists. NumPy adds array functionality to Python. Before we get into the differences, let's run the same test on a `Numpy.array`. Add the following lines to your code:
+```
+y = np.array([2,5,10,394,420,50000,12309203920,5e+15])
+```
+And now, run this in the terminal:
+```
+python -m timeit -v lambda:hellaMath(y)
+```
+Here's what my PC gave me:
+```
+10 loops -> 1.51e-06 secs
+100 loops -> 1.13e-05 secs
+1000 loops -> 9.7e-05 secs
+10000 loops -> 0.000709 secs
+100000 loops -> 0.00641 secs
+1000000 loops -> 0.0744 secs
+10000000 loops -> 0.679 secs
+raw times: 0.66 0.804 0.837
+10000000 loops, best of 3: 0.066 usec per loop
+```
+0.066µseconds! That's 35% faster than using lists! Noted, this is a rather simplistic example and 35% doesn't seem much, but when you work with larger functions and more complicated manipilation methods, microseconds add up to milliseconds, and milliseconds add up to seconds and so on.
+
+What makes NumPy so fast? It's homogenised, so every element is of the same type. Try printing the variables `x` and `y` and you'll see the following output:
+```
+x: [2, 5, 10, 394, 420, 50000, 12309203920, 5000000000000000.0]
+y: [  2.00000000e+00   5.00000000e+00   1.00000000e+01   3.94000000e+02
+      4.20000000e+02   5.00000000e+04   1.23092039e+10   5.00000000e+15]
+```
+Notice the difference? All NumPy elements are the same, and this makes calculations much faster and thus, more efficient. 
+
+### Step 2 - Understand that NumPy is superior, and learn a bit more about it
+
+
+## Section 2 - Working with Matplotlib - Charts, Axes and Nucleotide Sequences
 
 ### Step 1 - Importing libraries and setting up the sequence
 To start off, we need to import a few libaries for our use. Create a python file called `sequence.py`. Add the following lines to the top of your code:
