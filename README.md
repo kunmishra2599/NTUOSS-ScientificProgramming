@@ -13,7 +13,8 @@ Where?: LT13, North Spine, NTU
 Who?: NTU Open Source Society
 
 ### Pre-requisites:
-- Python 3.x installed
+- Python 3.x
+- Comfy Clothes
 - Dependencies:
    - Install them all through [Anaconda](https://www.anaconda.com/download/), which bundles a bunch of libraries for your use.
    - Or install them all in one go using pip. One of the following commands should work:
@@ -22,7 +23,11 @@ python -m pip install --user numpy scipy matplotlib ipython jupyter pandas sympy
 pip install --user numpy scipy matplotlib ipython jupyter pandas sympy nose
 pip3 install --user numpy scipy matplotlib ipython jupyter pandas sympy nose
 ```
-  
+
+### Workshop Overview
+This workshop serves as an introduction to the SciPy stack. By using some relevant examples, I plan to introduce some concepts and demonstrate what the SciPy stack is capable of. Since I planned to keep the emphasis on the demonstration and the stack's abilty, the workshop isn't hard to follow through on, making it easier on you if you're a novice programmer.
+
+---
 
 ## Section 1 - Some NumPy basics - Arrays, Indexing and Getting into the Matrix
 
