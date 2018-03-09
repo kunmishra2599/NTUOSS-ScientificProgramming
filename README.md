@@ -463,6 +463,16 @@ As you can see, the graph intersets the x axis at -3, corresponding to the solut
 
 The graph doesn't intersect the axis at all, and as anyone who's done algebra knows, this means the function has imaginary roots, as shown through the solution above through SymPy. 
 
+This should show SymPy's capability. You can do much, much more, like evaluate limits, trigonometric expressions, simplify expressions and run integrals. Best of all, it has support for LATEX, so you could type a line in LATEX and it would evaluate it like any other expression. Check out a full list of things SymPy can do [here](http://docs.sympy.org/latest/index.html).
+
+---
+### That's all folks!
+
+I understand that it's been a very superficial treatment of the stack, and you'll see soon that it's capable of _alot_ more, but in the interest of getting my point across, I've chosen to keep it quite simple and a bit basic. You can feel free to reach out in case of any doubts!
+
+Special thanks to NTUOSS for letting me give this talk in the first place, and to the AY2017-2018 committee for their views on the workshop!
+
+Cheers!
 
 ## Resources:
 - SciPy's Homepage: https://scipy.org/
@@ -473,3 +483,4 @@ The graph doesn't intersect the axis at all, and as anyone who's done algebra kn
 - Haemoglobin and Myoglobin: https://www.quora.com/What-is-the-difference-between-hemoglobin-and-myoglobin-How-are-they-useful
 - Structure and Function Relation of human haemoglobins (interesting paper, if you've got the time): https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1484532/
 - Guitar Inspiration: https://youtu.be/LTseTg48568?t=4m35s
+- SymPy's documentation: http://docs.sympy.org/latest/index.html
