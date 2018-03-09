@@ -1,15 +1,35 @@
 # NTUOSS-ScientificProgramming
-Workshop for NTUOSS AY2017-2018
+_Workshop for NTUOSS AY2017-2018_
 
 _Written by [Kunal Mishra](https://github.com/kunmishra2599) for [NTU Open Source Society](https://github.com/ntuoss)_
 
 ---
+### Workshop Details:
 
+When?: Friday, 17 March 2018. 6:30 PM - 8:30 PM.
+
+Where?: LT13, North Spine, NTU
+
+Who?: NTU Open Source Society
+
+### Pre-requisites:
+- Python 3.x installed
+- Dependencies:
+   - Install them all through [Anaconda](https://www.anaconda.com/download/), which bundles a bunch of libraries for your use.
+   - Or install them all in one go using pip. One of the following commands should work:
+```
+python -m pip install --user numpy scipy matplotlib ipython jupyter pandas sympy nose
+pip install --user numpy scipy matplotlib ipython jupyter pandas sympy nose
+pip3 install --user numpy scipy matplotlib ipython jupyter pandas sympy nose
+```
+  
 
 ## Section 1 - Some NumPy basics - Arrays, Indexing and Getting into the Matrix
 
+Now, before we move any further, lets talk a bit about Numpy. It's one of the most useful libraries in python, adding support for arrays, matrices and poweful mathematical manipulation. Built in [2005](https://en.wikipedia.org/wiki/NumPy), it made running complex calculations in python much faster and easier with the help of built in functions. You'll find yourself using this library quite often soon, so it pays to know what it is (Throwback to Chait's workshop on [Machine Learning](https://github.com/chaitjo/NTUOSS-MachineLearningWorkshop)).
+
 ### Step 1 - What makes NumPy so great?
-Before we can get into the data visualisation aspect, we gotta go through some NumPy basics. Lets start off simple. Create a file called `neo.py`, and inside it, add the following lines of code to import NumPy:
+First, lets go through some NumPy basics. Lets start off simple. Create a file called `neo.py`, and inside it, add the following lines of code to import NumPy:
 
 ```python
 import numpy as np
@@ -24,7 +44,6 @@ x = [2,5,10,394,420,50000,12309203920,5e+15]
 def hellaMath(items):
     return (np.tan(items*np.sin(items)*np.cos(items)))**25
 ```
-Now, before we move any further, lets talk a bit about Numpy. It's one of the most useful libraries in python, adding support for arrays, matrices and poweful mathematical manipulation. Built in [2005](https://en.wikipedia.org/wiki/NumPy), it made running complex calculations in python much faster and easier with the help of built in functions. You'll find yourself using this library quite often soon, so it pays to know what it is (Throwback to Chait's workshop on [Machine Learning](https://github.com/chaitjo/NTUOSS-MachineLearningWorkshop)).
 
 Now, using NumPy's built in functions, I've defined a function `hellaMath` that runs some calculations on elements of a list / array. You can find the whole list of built in Mathematical functions [here](https://docs.scipy.org/doc/numpy/reference/routines.math.html). Before we go further, I want to demonstrate NumPy's spectacular efficiency. Run the following line in your terminal:
 ```python
@@ -94,7 +113,7 @@ Shape:(4, 3)
 ```
 Each Multidimensional array has a particular shape, which can be accessed from `yourarrayhere.shape`, which is in the format (Rows, Columns).
 Array indexing is also quite similar to the way you'd index lists, with some twists. Take this example:
-```
+```python
 print(a2[0,1])
 20
 print(a2[2,2])
@@ -116,6 +135,12 @@ a2*a2
  [10000 12100 14400]]
 ```
 Every element multiplies by its counterpart with the same index. 
+
+In addition to arrays, NumPy has amazing support for random number generation and sampling. For example, if you're working with particular distributions in statistics(F, T, Normal, etc.), NumPy lets you draw random samples from these particular descriptions for your use. Check out a whole list [here](https://docs.scipy.org/doc/numpy/reference/routines.random.html#distributions).
+
+**Disclaimer:**
+
+What I've given here is only a small subsection of what NumPy is truly capable of. You can check out the whole documentation [here](https://docs.scipy.org/doc/numpy/reference/index.html), and it is _fabulous_. Apologies for taking it really superficially, I've just intended for this workshop to give you guys an overview of the SciPy stack, so you can take it further by picking and choosing the libraries you need for your own projects! 
 
 ## Section 2 - Working with Matplotlib - Charts, Axes and Nucleotide Sequences
 
@@ -333,3 +358,13 @@ On analysing the graph, you can see that though the fragment frequencies are lar
 Interesting? [Here](http://www.sbs.ntu.edu.sg/prospective/undergraduate/MinorinLifeSciences/Pages/Home.aspx)'s a link outlining the Life Sciences Minor at NTU(haha).
 
 
+
+## Resources:
+- SciPy's Homepage: https://scipy.org/
+- NumPy Reference Documentation: https://docs.scipy.org/doc/numpy/reference/index.html
+- Kuleshov and Caswell's CS228 Python tutorial (Really good for a quick refresher): https://github.com/kuleshov/cs228-material/blob/master/tutorials/python/cs228-python-tutorial.ipynb
+- Matplotlib's Reference Documentation: https://github.com/kuleshov/cs228-material/blob/master/tutorials/python/cs228-python-tutorial.ipynb
+- BLAST: https://blast.ncbi.nlm.nih.gov/Blast.cgi
+- Haemoglobin and Myoglobin: https://www.quora.com/What-is-the-difference-between-hemoglobin-and-myoglobin-How-are-they-useful
+- Structure and Function Relation of human haemoglobins (interesting paper, if you've got the time): https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1484532/
+- Guitar Inspiration: https://youtu.be/LTseTg48568?t=4m35s
