@@ -1,4 +1,4 @@
-# NTUOSS-ScientificProgramming
+# TGIF Hacks #Not_Sure: Introduction to Scientific Programming with SciPy!
 _Workshop for AY2017-2018_
 
 _Written by [Kunal Mishra](https://github.com/kunmishra2599) for [NTU Open Source Society](https://github.com/ntuoss)_
