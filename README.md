@@ -1,16 +1,16 @@
 # NTUOSS-ScientificProgramming
-_Workshop for NTUOSS AY2017-2018_
+_Workshop for AY2017-2018_
 
 _Written by [Kunal Mishra](https://github.com/kunmishra2599) for [NTU Open Source Society](https://github.com/ntuoss)_
 
 ---
 ### Workshop Details:
 
-When?: Friday, 17 March 2018. 6:30 PM - 8:30 PM.
+When? Friday, 17 March 2018. 6:30 PM - 8:30 PM.
 
-Where?: LT13, North Spine, NTU
+Where? LT13, North Spine, NTU
 
-Who?: NTU Open Source Society
+Who? NTU Open Source Society
 
 ### Pre-requisites:
 - Python 3.x
@@ -377,7 +377,92 @@ Interesting? [Here](http://www.sbs.ntu.edu.sg/prospective/undergraduate/MinorinL
 
 ## Section 3 - Solving equations with SymPy
 While calculations using Python's built in `math` module or SciPy's `numpy` module might work in most cases, sometimes having precise calculations, rather than approximations(for example, to the 10th decimal place) might not work. Imagine plotting the course of a rocket to Mars and relying on numerical data only accurate to the 10th decimal place! Taking into account wind, acceleration, mass and countless other factors, the rocket is most likely to, well...
-![Alt Text](images/boom.gif)
+
+
+![Rocket goes boom](images/boom.gif)
+
+Let's take some basic examples first. Create a file called `sim.py` and add the following lines of code to the file:
+```python
+import math
+import sympy
+
+x = math.sqrt(24)
+y = sympy.sqrt(24)
+
+print(x)
+print(y)
+```
+Now try printing the variables x and y. You should see the following output:
+```python
+4.898979485566356
+2*sqrt(6)
+```
+Woah! What happened there! The math module printed the the approximate result, which is what you'd get on plugging it in many calculators. But what did NumPy do exactly?
+It printed the equivalent of this:
+<img src="https://latex.codecogs.com/gif.latex?\sqrt{24}&space;=&space;\sqrt{4*6}&space;=&space;2*\sqrt{6}" title="\sqrt{24} = \sqrt{4*6} = 2*\sqrt{6}" />.
+
+That's where SymPy's specificity comes from. If we were to use the value of x in another calculation, it would lead to errors somewhere along the the line. However, using SymPy's rationalisation of equations such as this, it increases the accuracy of your calculations by keeping it in this form, allowing smoother manipulation. 
+
+
+This is the essence of SymPy. It tries to simplify calculations wherever possible to ensure smoother calculations. 
+Let's take it one step further and try writing this expression in SymPy: <img src="https://latex.codecogs.com/gif.latex?2a&space;&plus;&space;4ab&plus;&space;6b^2" title="2a + 4ab+ 6b^2" />.
+
+Add the following lines of code to your file:
+```python
+a, b = sympy.symbols('a b')
+e = 2*a + 4*a*b + 6*b**2
+```
+SymPy has a set of symbols, or variables we can import for use in our equations. It's as simple as defining variables programmatically in Python and making them equal to sympy's own symbols. Once that's done, you can use them in expressions, the way I've used them above. 
+Now try adding this line of code:
+```python
+e-a
+```
+Normally, you'd expect the output to be `2*a + 4*a*b + 6*b**2 - a`, but SymPy is smarter. It prints this:
+```python
+4*a*b + a + 6*b**2
+```
+SymPy's run the calculation the way you'd expect algebra to work! And it's rearranged the equation too! In this way, you can run and specify particular algebraic statements in your programs and solve them programmatically too. Take this example:
+```python
+d = sympy.symbols('d')
+solution1 = sympy.solve(d**2 + 6*d + 9)
+print(solution1)
+>>>[-3]
+solution2 = sympy.solve(2*d**2 - 6*d + 9)
+print(solution2)
+>>>[3/2 - 3*I/2, 3/2 + 3*I/2]
+```
+This is cool. We've attempted to solve two equations: <img src="https://latex.codecogs.com/gif.latex?d^2&space;&plus;&space;6d&space;&plus;&space;9" title="d^2 + 6d + 9" /> and <img src="https://latex.codecogs.com/gif.latex?2d^2&space;-&space;6d&space;&plus;&space;9" title="2d^2 - 6d + 9" />. Before we try looking into the solution, let's try plotting our graphs using our pal, Matplotlib.
+
+In your file, `import numpy as np`, and add the following function to your file:
+```
+def graph(formula, data_range):
+    x = np.array(data_range)
+    y = eval(formula)
+    
+    ax = plt.gca()
+    
+    ax.spines['right'].set_color('none')
+    ax.spines['top'].set_color('none')
+    ax.xaxis.set_ticks_position('bottom')
+    ax.spines['bottom'].set_position(('data',0))
+    ax.yaxis.set_ticks_position('left')
+    ax.spines['left'].set_position(('data',0))
+    
+    plt.plot(x, y)
+    plt.show()
+
+graph('x**2 + 6*x + 9', range(-20,20))
+```
+Most of this code is similar to the code used above in Section 2, and feel free to use this function in the future cause it makes graphing functions quick and convenient. This gives the following output:
+
+![graph1](images/3.1.png)
+
+As you can see, the graph intersets the x axis at -3, corresponding to the solution given above using SymPy. Running the function on our second expression, however, gives the following graph(after zooming in a little :) ):
+
+![graph2](images/3.2.png)
+
+The graph doesn't intersect the axis at all, and as anyone who's done algebra knows, this means the function has imaginary roots, as shown through the solution above through SymPy. 
+
 
 ## Resources:
 - SciPy's Homepage: https://scipy.org/
