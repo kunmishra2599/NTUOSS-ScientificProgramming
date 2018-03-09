@@ -38,7 +38,7 @@ The SciPy stack is a collection of open source tools to help conduct scientific 
 
 _and much much more._ 
 
-The stack also has integrations with [iPython](http://ipython.org/), an intelligent python shell and JuPyter. These are so useful in scientific computations that once you start using the shell you might never go back to python. 
+The stack also has integrations with [iPython](http://ipython.org/), an intelligent python shell and JuPyter. These are so useful in scientific computations that once you start using the shell you might never go back to the standard python shell. 
 
 In this workshop, I'll cover some of the basics of NumPy, Matplotlib, and a little bit of SymPy to get you guys started. **Disclaimer:** this workshop is not intended to be an exhaustive tutorial. I'm attempting to cover just a bit of the basics of some of the modules in the stack, and hopefully guide you into learning more about the stack on your own. Comfy? Let's begin. 
 
