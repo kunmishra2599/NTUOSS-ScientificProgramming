@@ -1,16 +1,16 @@
 # NTUOSS-ScientificProgramming
-_Workshop for NTUOSS AY2017-2018_
+_Workshop for AY2017-2018_
 
 _Written by [Kunal Mishra](https://github.com/kunmishra2599) for [NTU Open Source Society](https://github.com/ntuoss)_
 
 ---
 ### Workshop Details:
 
-When?: Friday, 17 March 2018. 6:30 PM - 8:30 PM.
+When? Friday, 17 March 2018. 6:30 PM - 8:30 PM.
 
-Where?: LT13, North Spine, NTU
+Where? LT13, North Spine, NTU
 
-Who?: NTU Open Source Society
+Who? NTU Open Source Society
 
 ### Pre-requisites:
 - Python 3.x
@@ -432,6 +432,37 @@ print(solution2)
 >>>[3/2 - 3*I/2, 3/2 + 3*I/2]
 ```
 This is cool. We've attempted to solve two equations: <img src="https://latex.codecogs.com/gif.latex?d^2&space;&plus;&space;6d&space;&plus;&space;9" title="d^2 + 6d + 9" /> and <img src="https://latex.codecogs.com/gif.latex?2d^2&space;-&space;6d&space;&plus;&space;9" title="2d^2 - 6d + 9" />. Before we try looking into the solution, let's try plotting our graphs using our pal, Matplotlib.
+
+In your file, `import numpy as np`, and add the following function to your file:
+```
+def graph(formula, data_range):
+    x = np.array(data_range)
+    y = eval(formula)
+    
+    ax = plt.gca()
+    
+    ax.spines['right'].set_color('none')
+    ax.spines['top'].set_color('none')
+    ax.xaxis.set_ticks_position('bottom')
+    ax.spines['bottom'].set_position(('data',0))
+    ax.yaxis.set_ticks_position('left')
+    ax.spines['left'].set_position(('data',0))
+    
+    plt.plot(x, y)
+    plt.show()
+
+graph('x**2 + 6*x + 9', range(-20,20))
+```
+Most of this code is similar to the code used above in Section 2, and feel free to use this function in the future cause it makes graphing functions quick and convenient. This gives the following output:
+
+![graph1](images/3.1.png)
+
+As you can see, the graph intersets the x axis at -3, corresponding to the solution given above using SymPy. Running the function on our second expression, however, gives the following graph(after zooming in a little :) ):
+
+![graph2](images/3.2.png)
+
+The graph doesn't intersect the axis at all, and as anyone who's done algebra knows, this means the function has imaginary roots, as shown through the solution above through SymPy. 
+
 
 ## Resources:
 - SciPy's Homepage: https://scipy.org/
