@@ -375,7 +375,9 @@ On analysing the graph, you can see that though the fragment frequencies are lar
 
 Interesting? [Here](http://www.sbs.ntu.edu.sg/prospective/undergraduate/MinorinLifeSciences/Pages/Home.aspx)'s a link outlining the Life Sciences Minor at NTU(haha).
 
-
+## Section 3 - Solving equations with SymPy
+While calculations using Python's built in `math` module or SciPy's `numpy` module might work in most cases, sometimes having precise calculations, rather than approximations(for example, to the 10th decimal place) might not work. Imagine plotting the course of a rocket to Mars and relying on numerical data only accurate to the 10th decimal place! Taking into account wind, acceleration, mass and countless other factors, the rocket is most likely to, well...
+![Alt Text](images/boom.gif)
 
 ## Resources:
 - SciPy's Homepage: https://scipy.org/
