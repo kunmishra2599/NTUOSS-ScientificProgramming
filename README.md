@@ -29,6 +29,19 @@ This workshop serves as an introduction to the SciPy stack. By using some releva
 
 ---
 
+## What is SciPy?
+The SciPy stack is a collection of open source tools to help conduct scientific and mathematical computations for nearly any scientific purpose. It consists of numerous interdependent librares, such as:
+- NumPy: a package for numerical computations
+- Matplotlib: a package to aid data visualisation
+- SymPy: a library for symbolic mathematics, designed to work hand in hand with NumPy
+- Pandas: a package to aid data I/O and data analysis
+
+_and much much more._ 
+
+The stack also has integrations with [iPython](http://ipython.org/), an intelligent python shell and JuPyter. These are so useful in scientific computations that once you start using the shell you might never go back to python. 
+
+In this workshop, I'll cover some of the basics of NumPy, Matplotlib, and a little bit of SymPy to get you guys started. **Disclaimer:** this workshop is not intended to be an exhaustive tutorial. I'm attempting to cover just a bit of the basics of some of the modules in the stack, and hopefully guide you into learning more about the stack on your own. Comfy? Let's begin. 
+
 ## Section 1 - Some NumPy basics - Arrays, Indexing and Getting into the Matrix
 
 Now, before we move any further, lets talk a bit about Numpy. It's one of the most useful libraries in python, adding support for arrays, matrices and poweful mathematical manipulation. Built in [2005](https://en.wikipedia.org/wiki/NumPy), it made running complex calculations in python much faster and easier with the help of built in functions. You'll find yourself using this library quite often soon, so it pays to know what it is (Throwback to Chait's workshop on [Machine Learning](https://github.com/chaitjo/NTUOSS-MachineLearningWorkshop)).
